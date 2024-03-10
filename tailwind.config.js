@@ -8,5 +8,8 @@ export default {
       padding: "2rem",
     },
   },
+colors:{
+  
+}
   plugins: [],
 };
