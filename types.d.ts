@@ -11,3 +11,10 @@ export interface Link {
   url: string;
   icon: string;
 }
+
+export interface Palette {
+  bg: string;
+  text: string;
+  accent: string;
+  cta: string;
+}
