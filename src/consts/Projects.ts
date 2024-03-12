@@ -14,7 +14,7 @@ export const projects: Project[] = [
       },
       {
         name: "deploy",
-        url: "https://vuecommerce-nine.vercel.app/",
+        url: "https://vuello.marcopianaroli.com",
         icon: "carbon:deploy",
       },
     ],
@@ -33,7 +33,7 @@ export const projects: Project[] = [
       },
       {
         name: "deploy",
-        url: "https://vuecommerce-nine.vercel.app/",
+        url: "https://vuecommerce.marcopianaroli.com/",
         icon: "carbon:deploy",
       },
     ],
@@ -71,7 +71,7 @@ export const projects: Project[] = [
       },
       {
         name: "deploy",
-        url: "https://expense-tracker-neon-kappa.vercel.app/",
+        url: "https://expenses.marcopianaroli.com/",
         icon: "carbon:deploy",
       },
     ],
