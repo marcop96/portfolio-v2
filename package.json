@@ -9,10 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@iconify-prerendered/vue-mdi": "^0.23.1704178618",
     "vue": "^3.4.15"
   },
   "devDependencies": {
+    "@iconify/vue": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-vue": "^5.0.3",
