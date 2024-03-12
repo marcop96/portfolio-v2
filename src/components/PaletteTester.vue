@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { contactMeText } from "../consts/ContactMe";
+
 import { palettes } from "../consts/colors";
 import type { Palette } from "../../types";
 
@@ -18,12 +18,12 @@ function changePalete(palette: Palette) {
 </script>
 
 <template>
-  <div class="p-8 container">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="container p-8">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
       <div
         v-for="(palette, index) in palettes"
         :key="index"
-        class="p-4 border rounded-lg shadow-lg"
+        class="rounded-lg border p-4 shadow-lg"
       >
         <div class="grid grid-cols-4 gap-2">
           <div
@@ -31,26 +31,12 @@ function changePalete(palette: Palette) {
             @click="changePalete(palette)"
             :key="colorIndex"
             :style="{ backgroundColor: color }"
-            class="h-16 w-16 rounded hover:opacity-80 transition-opacity duration-300 ease-in-out cursor-pointer"
+            class="h-16 w-16 cursor-pointer rounded transition-opacity duration-300 ease-in-out hover:opacity-80"
           ></div>
         </div>
         <div class="mt-2 text-center font-bold">{{ index }}</div>
       </div>
     </div>
-  </div>
-
-  <div
-    class="container h-72 p-4 my-10"
-    :style="{ 'background-color': backgroundColor }"
-  >
-    <p :style="{ color: textColor }">{{ contactMeText.introduction }}</p>
-    <button
-      :style="{ color: accentColor, border: `2px solid ${CTAColor}` }"
-      class="border-2 rounded-sm p-4 text-center mx-auto"
-    >
-      {{ contactMeText.email }}
-    </button>
-    <p :style="{ color: accentColor }">{{ contactMeText.buildTogether }}</p>
   </div>
 </template>
 
