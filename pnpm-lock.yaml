@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@iconify-prerendered/vue-mdi':
+    specifier: ^0.23.1704178618
+    version: 0.23.1704178618(vue@3.4.18)
   vue:
     specifier: ^3.4.15
     version: 3.4.18(typescript@5.3.3)
@@ -348,6 +351,14 @@ packages:
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
+
+  /@iconify-prerendered/vue-mdi@0.23.1704178618(vue@3.4.18):
+    resolution: {integrity: sha512-jXLYRSU21+S53HzPGODXyA6uWPQYRdDWSpJ4NM+fLrFoYLJZeUPDBLeWY8IbCr58UAAIAWLR4uD7Q+cDsG+XCw==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.4.18(typescript@5.3.3)
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
