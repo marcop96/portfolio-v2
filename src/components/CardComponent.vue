@@ -13,7 +13,7 @@ function getImageUrl(name: String) {
 
 <template>
   <main
-    class="bg-red-500 container m-2 mx-2 flex h-96 w-96 flex-col justify-center rounded-sm"
+    class="container m-2 mx-2 flex h-96 w-96 flex-col justify-center rounded-sm bg-red-500"
   >
     <h2 class="self-center text-2xl">{{ title }}</h2>
     <img
@@ -21,7 +21,7 @@ function getImageUrl(name: String) {
       alt="project image"
       class="aspect-square h-32 object-contain"
     />
-    <div class="flex justify-center p-1">
+    <div class="flex justify-center p-3">
       <PillButton
         v-for="technology in technologies"
         :key="technology"
@@ -41,3 +41,8 @@ function getImageUrl(name: String) {
     </ul>
   </main>
 </template>
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
