@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { aboutMe, introText } from "../consts/InfoTexts";
-import {
-  IconLinkedin,
-  IconGithub,
-  IconEmail,
-} from "@iconify-prerendered/vue-mdi";
+import PillButton from "./PillButton.vue";
 console.log(aboutMe);
 </script>
 
 <template>
-  <div class="container flex flex-col justify-center">
+  <div class="container flex max-w-4xl flex-col justify-center text-center">
     <img
       src="../assets/marcoprofile.jpg"
       class="mx-2 h-48 w-48 self-center rounded-full object-cover"
@@ -19,17 +15,23 @@ console.log(aboutMe);
       <span class="text-red-500">{{ introText.role }}</span> developer</span
     >
     <p class="text-2xl">{{ introText.description }}</p>
-    <nav class="m-12 flex justify-center">
-      <a
-        class="mx-2"
-        :href="'https://www.linkedin.com/in/marco-pianaroli96/'"
-        target="_blank"
-      >
-        <IconLinkedin class="h-12 w-12 hover:opacity-50" />
-      </a>
-      <a class="mx-2" :href="'https://github.com/marcop96'" target="_blank">
-        <IconGithub class="h-12 w-12 hover:opacity-50" />
-      </a>
+    <nav class="m-6 flex justify-center">
+      <PillButton
+        url="https://www.linkedin.com/in/marco-pianaroli96/"
+        icon="carbon:logo-linkedin"
+        styles=" w- bg-black rounded-full mx-1"
+      />
+
+      <PillButton
+        url="https://github.com/marcop96"
+        icon="carbon:logo-github"
+        styles=" w- bg-black rounded-full mx-1"
+      />
+      <PillButton
+        url="mailto:pianarolimarco@gmail.com?subject=Front end developer position"
+        icon="carbon:email"
+        styles=" w- bg-black rounded-full mx-1"
+      />
       <a
         class="mx-2"
         :href="'mailto:me@marcopianaroli.com?subject=Front end developer position'"

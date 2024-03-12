@@ -13,7 +13,7 @@ const props = defineProps({
     :href="props.url"
     target="_blank"
     :class="props.styles"
-    class="text-white p-2 font-bold transition-all hover:opacity-80"
+    class="p-2 font-bold text-white transition-all hover:opacity-80"
   >
     <Icon :icon="props.icon as string" height="20px" width="20px" />
   </a>
