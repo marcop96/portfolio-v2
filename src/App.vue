@@ -9,7 +9,7 @@ import TheProjects from "./components/TheProjects.vue";
   <main class="flex flex-col justify-center">
     <!-- <section><PaletteTester /></section> -->
     <section id="info"><IntroSection /></section>
-    <section id="projects"><TheProjects /></section>
+    <section id="projects" class="flex justify-center"><TheProjects /></section>
   </main>
 </template>
 
