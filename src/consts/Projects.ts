@@ -28,7 +28,7 @@ export const projects: Project[] = [
     links: [
       {
         name: "Github",
-        url: "vuecommerce-img.png",
+        url: "https://github.com/marcop96/vuecommerce",
         icon: "carbon:logo-github",
       },
       {
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     links: [
       {
         name: "Github",
-        url: "https://www.github.com/",
+        url: "https://github.com/marcop96/reactcourse",
         icon: "carbon:logo-github",
       },
       {
