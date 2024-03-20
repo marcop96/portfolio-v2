@@ -36,7 +36,6 @@ console.log(aboutMe);
         class="mx-2"
         :href="'mailto:me@marcopianaroli.com?subject=Front end developer position'"
       >
-        <IconEmail class="h-12 w-12 hover:opacity-50" />
       </a>
     </nav>
   </div>
