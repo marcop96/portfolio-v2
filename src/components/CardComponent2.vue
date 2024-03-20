@@ -26,10 +26,18 @@ function getImageUrl(name: String) {
     <img :src="getImageUrl(image)" class="" />
     <div class="card__content" :class="{ expanded: isExpanded }">
       <p class="card__title">{{ title }}</p>
+      <div class="flex">
+        <PillButton
+          v-for="technology in technologies"
+          :key="technology"
+          :icon="technology"
+          styles="bg-white rounded-full mx-2"
+        />
+      </div>
       <p class="card__description">
         {{ description }}
       </p>
-      <ul class="flex justify-center">
+      <ul class="m-4 flex justify-center">
         <PillButton
           v-for="link in links"
           :key="link.url"
