@@ -39,3 +39,11 @@ export const contactMeText = {
   gitHub: "https://www.github.com/marcop96",
   availability: "open for opportunities",
 };
+
+export const whatAmIDoingNow = {
+  currentProject:
+    "Currently I'm working on an incremental game using VueJS and Firebase. Also constantly going back to the current projects to improve them, since I'm constantly learning new stuff to stay updated with the current technologies",
+  currentPersonal:
+    "After a long time without any race, I'm back to training for a 15K",
+  currentLearning: "Currently learning about web performance and SEO",
+};
