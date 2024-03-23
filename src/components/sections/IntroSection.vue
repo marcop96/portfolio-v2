@@ -7,7 +7,7 @@ console.log(aboutMe);
 <template>
   <div class="container flex max-w-4xl flex-col justify-center text-center">
     <img
-      src="../assets/marcoprofile.jpg"
+      src="../../assets/marcoprofile.jpg"
       class="mx-2 h-48 w-48 self-center rounded-full object-cover"
     />
     <span class="text-center text-4xl"
