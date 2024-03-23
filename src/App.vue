@@ -2,6 +2,7 @@
 import NavBar from "./components/NavBar.vue";
 import IntroSection from "./components/sections/IntroSection.vue";
 import TheProjects from "./components/sections/TheProjects.vue";
+import AboutMeSection from "./components/sections/AboutMeSection.vue";
 </script>
 
 <template>
@@ -9,7 +10,7 @@ import TheProjects from "./components/sections/TheProjects.vue";
   <main class="flex flex-col justify-center">
     <section id="info"><IntroSection /></section>
     <section id="projects" class="flex justify-center"><TheProjects /></section>
-    <section id="about" class="flex justify-center"><h1>About me</h1></section>
+    <section id="about" class="flex justify-center"><AboutMeSection /></section>
   </main>
 </template>
 
