@@ -8,6 +8,12 @@ function scrollToProjects() {
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+function scrollToAboutMe() {
+  const aboutMeElement = document.getElementById("about");
+  if (aboutMeElement) {
+    aboutMeElement.scrollIntoView({ behavior: "smooth" });
+  }
+}
 </script>
 
 <template>
@@ -20,8 +26,9 @@ function scrollToTop() {
       <article to="projects" class="mx-2" @click="scrollToProjects">
         projects
       </article>
-      <article to="about" class="mx-2" @click="">about me</article>
-      <article to="contactme" class="mx-2" @click="">contact</article>
+      <article to="about" class="mx-2" @click="scrollToAboutMe">
+        about me
+      </article>
     </nav>
   </div>
 </template>
