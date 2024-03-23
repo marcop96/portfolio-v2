@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import CardComponent2 from "./CardComponent2.vue";
-import { projects } from "../consts/Projects";
+import CardComponent2 from "../CardComponent2.vue";
+import { projects } from "../../consts/Projects";
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col pt-20">
     <h2 class="text-center text-3xl">My projects</h2>
     <main>
       <ul class="grid grid-cols-1 lg:grid-cols-2">

@@ -15,6 +15,6 @@ const props = defineProps({
     :class="props.styles"
     class="p-2 font-bold text-white transition-all hover:opacity-80"
   >
-    <Icon :icon="props.icon as string" height="20px" width="20px" />
+    <Icon :icon="props.icon as string" height="25px" width="25px" />
   </a>
 </template>
