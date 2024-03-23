@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { aboutMe, introText } from "../../consts/InfoTexts";
+import { introText } from "../../consts/InfoTexts";
 import PillButton from "../PillButton.vue";
-console.log(aboutMe);
 </script>
 
 <template>

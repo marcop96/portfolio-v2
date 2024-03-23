@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { contactMeText, whatAmIDoingNow } from "../../consts/InfoTexts";
-console.log(contactMeText);
-console.log(whatAmIDoingNow);
 </script>
 
 <template>
