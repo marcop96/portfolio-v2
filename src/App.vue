@@ -6,7 +6,7 @@ import AboutMeSection from "./components/sections/AboutMeSection.vue";
 </script>
 
 <template>
-  <NavBar class="m-4" />
+  <NavBar id="navbar" class="m-4" />
   <main class="flex flex-col justify-center">
     <section id="info"><IntroSection /></section>
     <section id="projects" class="flex justify-center"><TheProjects /></section>
@@ -19,5 +19,13 @@ main {
   min-height: 100vh;
   width: 80%;
   margin: auto;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 </style>
