@@ -31,11 +31,7 @@ import PillButton from "../PillButton.vue";
         icon="carbon:email"
         styles=" w- bg-black rounded-full mx-1"
       />
-      <a
-        class="mx-2"
-        :href="'mailto:me@marcopianaroli.com?subject=Front end developer position'"
-      >
-      </a>
+      <RouterLink to="/resume"> <PillButton /> asd</RouterLink>
     </nav>
   </div>
 </template>
