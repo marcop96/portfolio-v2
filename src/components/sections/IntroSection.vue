@@ -14,7 +14,7 @@ import PillButton from "../PillButton.vue";
       <span class="text-red-500">{{ introText.role }}</span> developer</span
     >
     <p class="text-2xl">{{ introText.description }}</p>
-    <nav class="m-6 flex justify-center">
+    <nav class="my-6 flex w-full justify-center">
       <PillButton
         url="https://www.linkedin.com/in/marco-pianaroli96/"
         icon="carbon:logo-linkedin"
@@ -24,15 +24,19 @@ import PillButton from "../PillButton.vue";
       <PillButton
         url="https://github.com/marcop96"
         icon="carbon:logo-github"
-        styles=" w- bg-black rounded-full mx-1"
+        styles="  bg-black rounded-full mx-1"
       />
       <PillButton
         url="mailto:pianarolimarco@gmail.com?subject=Front end developer position"
         icon="carbon:email"
-        styles=" w- bg-black rounded-full mx-1"
+        styles="  bg-black rounded-full mx-1"
       />
-      <RouterLink to="/resume"> <PillButton /> asd</RouterLink>
     </nav>
+    <RouterLink to="/resume">
+      <button class="rounded-full bg-black p-3 text-white hover:opacity-80">
+        view my resume
+      </button>
+    </RouterLink>
   </div>
 </template>
 
