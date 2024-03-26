@@ -6,12 +6,18 @@ import AboutMeSection from "../components/sections/AboutMeSection.vue";
 </script>
 
 <template>
-  <NavBar id="navbar" class="m-4" />
-  <main class="flex flex-col justify-center">
-    <section id="info" class="mt-28"><IntroSection /></section>
-    <section id="projects" class="flex justify-center"><TheProjects /></section>
-    <section id="about" class="flex justify-center"><AboutMeSection /></section>
-  </main>
+  <div class="bg-[#e9ecef]">
+    <NavBar id="navbar" class="m-4" />
+    <main class="flex flex-col justify-center">
+      <section id="info" class="mt-28"><IntroSection /></section>
+      <section id="projects" class="flex justify-center">
+        <TheProjects />
+      </section>
+      <section id="about" class="flex justify-center">
+        <AboutMeSection />
+      </section>
+    </main>
+  </div>
 </template>
 
 <style scoped>
