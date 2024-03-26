@@ -29,6 +29,9 @@ function scrollToAboutMe() {
       <article to="about" class="mx-2" @click="scrollToAboutMe">
         about me
       </article>
+      <article to="about" class="mx-2" href>
+        <a href="/resume" target="blank">resume</a>
+      </article>
     </nav>
   </div>
 </template>
