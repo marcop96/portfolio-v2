@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
-const hello = ref("hello world");
+import resume from "../assets/resume.pdf";
 </script>
 
 <template>
-  {{ hello }}
+  <div class="h-screen">
+    <embed :src="resume" type="application/pdf" width="100%" height="100%" />
+  </div>
 </template>
