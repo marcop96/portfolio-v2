@@ -36,7 +36,7 @@ import PillButton from "../PillButton.vue";
     </nav>
     <RouterLink to="/resume" target="_blank">
       <button
-        class="rounded-full bg-black p-3 text-white transition-all duration-300 ease-in-out hover:bg-[#fab005] hover:opacity-80"
+        class="rounded-lg bg-black p-3 text-white transition-all duration-300 ease-in-out hover:bg-[#fab005] hover:opacity-80"
       >
         view my resume
       </button>
