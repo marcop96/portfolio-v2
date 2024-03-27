@@ -4,10 +4,10 @@ import { contactMeText, whatAmIDoingNow } from "../../consts/InfoTexts";
 
 <template>
   <div
-    class="container m-12 flex max-w-4xl flex-col justify-center text-center"
+    class="flex max-w-4xl flex-col justify-center text-center text-[#495057]"
   >
-    <p class="m-3 text-2xl">{{ contactMeText.introduction }}</p>
-    <p class="m-3 text-2xl">{{ whatAmIDoingNow.currentProject }}</p>
+    <p class="m-2 text-xl">{{ contactMeText.introduction }}</p>
+    <p class="m-2 text-xl">{{ whatAmIDoingNow.currentProject }}</p>
   </div>
 </template>
 
