@@ -17,9 +17,9 @@ function scrollToAboutMe() {
 </script>
 
 <template>
-  <div class="flex justify-center p-7">
+  <div class="flex justify-center">
     <nav
-      class="color-white fixed top-4 mx-1 flex h-fit w-fit flex-row rounded-lg border-2 border-black p-1 backdrop-blur"
+      class="color-white fixed top-4 mx-1 flex h-fit w-fit flex-row items-center rounded-lg border-2 border-black p-1 backdrop-blur"
     >
       <article to="/" class="mx-2" @click="scrollToTop">home</article>
 
