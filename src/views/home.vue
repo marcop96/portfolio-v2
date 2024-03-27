@@ -6,7 +6,7 @@ import AboutMeSection from "../components/sections/AboutMeSection.vue";
 </script>
 
 <template>
-  <div class="fixed bg-[#e9ecef] md:static">
+  <div class="sm:min-w-100vh mx-auto bg-[#e9ecef]">
     <NavBar id="navbar" class="m-4" />
     <main class="flex flex-col justify-center">
       <section id="info" class="mt-28"><IntroSection /></section>
