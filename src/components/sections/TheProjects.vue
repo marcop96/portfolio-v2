@@ -5,7 +5,7 @@ import { projects } from "../../consts/Projects";
 
 <template>
   <div class="flex flex-col pt-20">
-    <h2 class="text-center text-3xl">My projects</h2>
+    <h2 class="p-4 text-center text-3xl">My projects</h2>
     <main>
       <ul class="grid grid-cols-1 lg:grid-cols-2">
         <li class="mx-2" v-for="project in projects" :key="project.title">
