@@ -2,6 +2,44 @@ import { Project } from "../../types";
 
 export const projects: Project[] = [
   {
+    title: "QR Code + Shortener",
+    description:
+      "An URL Shortener with QR Code generator made with Nuxt and Supabase",
+    image: "qr-generator.png",
+    technologies: ["devicon:nuxtjs", "devicon:supabase"],
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/marcop96/reactcourse",
+        icon: "carbon:logo-github",
+      },
+      {
+        name: "deploy",
+        url: "https://short.marcopianaroli.com/",
+        icon: "carbon:deploy",
+      },
+    ],
+  },
+  {
+    title: "Incremental game",
+    description:
+      "A game inspired on RuneScape and Melvor Idle, where the player can train skills and gather resources",
+    image: "incremental.png",
+    technologies: ["devicon:nuxtjs", "logos:pinia"],
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/marcop96/reactcourse",
+        icon: "carbon:logo-github",
+      },
+      {
+        name: "deploy",
+        url: "https://incremental.marcopianaroli.com/",
+        icon: "carbon:deploy",
+      },
+    ],
+  },
+  {
     title: "Trello clone",
     description: "A Trello clone with drag & drop and customizable workspaces.",
     image: "trello-nuxt.png",
@@ -76,4 +114,6 @@ export const projects: Project[] = [
       },
     ],
   },
+  
+  
 ];
