@@ -16,7 +16,7 @@ export const projects: Project[] = [
       {
         name: "deploy",
         url: "https://short.marcopianaroli.com/",
-        icon: "carbon:deploy",
+        icon: "ph:code",
       },
     ],
   },
@@ -35,7 +35,7 @@ export const projects: Project[] = [
       {
         name: "deploy",
         url: "https://incremental.marcopianaroli.com/",
-        icon: "carbon:deploy",
+        icon: "ph:code",
       },
     ],
   },
@@ -53,7 +53,7 @@ export const projects: Project[] = [
       {
         name: "deploy",
         url: "https://vuello.marcopianaroli.com",
-        icon: "carbon:deploy",
+        icon: "ph:code",
       },
     ],
   },
@@ -72,7 +72,7 @@ export const projects: Project[] = [
       {
         name: "deploy",
         url: "https://vuecommerce.marcopianaroli.com/",
-        icon: "carbon:deploy",
+        icon: "ph:code",
       },
     ],
   },
@@ -91,7 +91,7 @@ export const projects: Project[] = [
   //     {
   //       name: "deploy",
   //       url: "https://vuecommerce-nine.vercel.app/",
-  //       icon: "carbon:deploy",
+  //       icon: "ph:code",
   //     },
   //   ],
   // },
@@ -110,7 +110,7 @@ export const projects: Project[] = [
       {
         name: "deploy",
         url: "https://expenses.marcopianaroli.com/",
-        icon: "carbon:deploy",
+        icon: "ph:code",
       },
     ],
   },

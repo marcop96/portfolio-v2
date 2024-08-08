@@ -6,41 +6,42 @@ const props = defineProps<{
 }>();
 const { title, description, image, technologies, links } = props.project;
 
-function getImageUrl(name: String) {
+function getImageUrl(name: string) {
   return new URL(`../assets/${name}`, import.meta.url).href;
 }
 </script>
 
 <template>
   <main
-    class="container m-2 mx-2 flex h-96 w-96 flex-col justify-center rounded-sm bg-red-500"
+    class="h-fit container m-4 p-4 flex flex-col justify-center rounded-xl shadow-lg bg-white bg-opacity-80"
   >
-    <h2 class="self-center text-2xl">{{ title }}</h2>
+    <h2 class="self-center text-3xl text-gray-800 font-semibold mb-4">{{ title }}</h2>
     <img
       :src="getImageUrl(image)"
       alt="project image"
-      class="aspect-square h-32 object-contain"
+      class="aspect-square h-40 object-cover rounded-lg shadow-md mb-4"
     />
-    <div class="flex justify-center p-3">
+    <div class="flex justify-center mb-4">
       <PillButton
         v-for="technology in technologies"
         :key="technology"
         :icon="technology"
-        styles="bg-white rounded-full mx-2"
+        styles="bg-gray-200 rounded-full mx-2 p-2 shadow-sm"
       />
     </div>
-    <p class="text-center">{{ description }}</p>
+    <p class="text-center text-gray-700 mb-4">{{ description }}</p>
     <ul class="flex justify-center">
       <PillButton
         v-for="link in links"
         :key="link.url"
         :url="link.url"
         :icon="link.icon"
-        styles="bg-black rounded-full mx-1"
+        styles="bg-blue-600 text-white rounded-full mx-2 p-2 shadow-sm"
       />
     </ul>
   </main>
 </template>
+
 <style>
 html {
   scroll-behavior: smooth;

@@ -26,7 +26,7 @@ main {
   min-height: 100vh;
   width: 80%;
   margin: auto;
-  background-image: radial-gradient(#645f5f48 1px, transparent 1px);
+  background-image: radial-gradient(#645f5f33 1px, transparent 10%);
   background-size: 40px 40px;
   background-color: #e9ecef;
 width:100%
