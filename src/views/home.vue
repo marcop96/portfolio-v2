@@ -6,7 +6,7 @@ import AboutMeSection from "../components/sections/AboutMeSection.vue";
 </script>
 
 <template>
-  <div class="sm:min-w-100vh mx-auto bg-[#e9ecef]">
+  <div class="sm:min-w-100vh mx-auto">
     <NavBar id="navbar" class="m-4" />
     <main class="flex flex-col justify-center">
       <section id="info" class="mt-28"><IntroSection /></section>
@@ -21,10 +21,17 @@ import AboutMeSection from "../components/sections/AboutMeSection.vue";
 </template>
 
 <style scoped>
+
 main {
   min-height: 100vh;
   width: 80%;
   margin: auto;
+  background-image: radial-gradient(#645f5f48 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-color: #e9ecef;
+width:100%
+
+
 }
 
 #navbar {
