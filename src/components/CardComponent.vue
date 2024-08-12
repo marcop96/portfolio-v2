@@ -32,14 +32,14 @@ function getImageUrl(name: string) {
         <span class="text-gray-700 text-xs text-center">{{ technology.name }}</span>
       </div>
     </div>
-    <p class="text-center text-gray-700 mb-4">{{ description }}</p>
+    <p class="text-center text-gray-700 mb-4 h-16">{{ description }}</p>
     <ul class="flex justify-center">
       <PillButton
         v-for="link in links"
         :key="link.url"
         :url="link.url"
         :icon="link.icon"
-        styles="bg-blue-600 text-white rounded-full mx-2 p-2 shadow-sm"
+        styles="bg-[#15aabf] text-white rounded-full mx-2 p-2 shadow-sm"
       />
     </ul>
   </main>
