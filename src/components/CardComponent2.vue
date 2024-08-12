@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { ref } from "vue";
 import type { Project } from "../../types";
 import PillButton from "./PillButton.vue";
@@ -117,4 +117,4 @@ function getImageUrl(name: String) {
   color: #777;
   line-height: 1.4;
 }
-</style>
+</style> -->
