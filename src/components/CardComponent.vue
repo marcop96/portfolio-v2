@@ -22,12 +22,15 @@ function getImageUrl(name: string) {
       class="aspect-square h-40 object-cover rounded-lg shadow-md mb-4"
     />
     <div class="flex justify-center mb-4">
-      <PillButton
-        v-for="technology in technologies"
-        :key="technology"
-        :icon="technology"
-        styles="bg-gray-200 rounded-full mx-2 p-2 shadow-sm"
-      />
+      <div class=' flex flex-col justify-center mb-4' v-for="technology in technologies" :key="technology.name">
+
+        <PillButton
+        :key="technology.name"
+        :icon="technology.icon"
+        styles="bg-gray-200 rounded-full mx-2 p-2 shadow-sm w-fit"
+        />
+        <span class="text-gray-700 text-xs text-center">{{ technology.name }}</span>
+      </div>
     </div>
     <p class="text-center text-gray-700 mb-4">{{ description }}</p>
     <ul class="flex justify-center">
