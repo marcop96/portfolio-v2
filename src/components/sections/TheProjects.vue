@@ -12,7 +12,7 @@ import { projects } from "../../consts/Projects";
           <!-- <CardComponent :project="project" class="h-80 w-96 rounded-sm" /> -->
           <CardComponent
             :project="project"
-            class="my-2 h-72 w-96 rounded-sm"
+            class="my-2 h-72 w-72 sm:w-96 rounded-sm"
           />
         </li>
       </ul>

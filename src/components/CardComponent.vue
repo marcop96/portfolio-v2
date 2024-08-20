@@ -22,10 +22,10 @@ function getImageUrl(name: string) {
       <img
       :src="getImageUrl(image)"
       alt="project image"
-      class="aspect-square h-40 object-cover rounded-lg w-full shadow-md mb-4"
+      class="aspect-square h-40 object-cover rounded-lg w-full shadow-md mb-4 hover:blur-sm"
       /></a>
     <div class="flex justify-center mb-4">
-      <div class=' flex flex-col justify-center mb-4' v-for="technology in technologies" :key="technology.name">
+      <div class=' flex flex-col justify-center mb-4 h-fit' v-for="technology in technologies" :key="technology.name">
 
         <PillButton
         :key="technology.name"
@@ -35,7 +35,7 @@ function getImageUrl(name: string) {
         <span class="text-gray-700 text-xs text-center">{{ technology.name }}</span>
       </div>
     </div>
-    <p class="text-center text-gray-700 mb-4 h-16">{{ description }}</p>
+    <p class="text-center text-gray-700 mb-4 h-fit">{{ description }}</p>
     <ul class="flex justify-center">
       <PillButton
         v-for="link in links"

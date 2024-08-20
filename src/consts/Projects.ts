@@ -50,8 +50,8 @@ export const projects: Project[] = [
     image: "trello-nuxt.png",
     technologies: [
       { name: "Vue.js", icon: "devicon:vuejs" },
-      { name: "Tailwind CSS", icon: "devicon:tailwindcss" },
       { name: "Nuxt.js", icon: "devicon:nuxtjs" },
+      { name: "Tailwind", icon: "devicon:tailwindcss" },
     ],
     links: [
       {
@@ -73,8 +73,8 @@ export const projects: Project[] = [
     image: "vuecommerce-img.png",
     technologies: [
       { name: "Vue.js", icon: "devicon:vuejs" },
-      { name: "Tailwind CSS", icon: "devicon:tailwindcss" },
       { name: "Vercel", icon: "devicon:vercel" },
+      { name: "Tailwind", icon: "devicon:tailwindcss" },
     ],
     links: [
       {
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     image: "expense-tracker-img.png",
     technologies: [
       { name: "React", icon: "devicon:react" },
-      { name: "Tailwind CSS", icon: "devicon:tailwindcss" },
+      { name: "Tailwind", icon: "devicon:tailwindcss" },
     ],
     links: [
       {
