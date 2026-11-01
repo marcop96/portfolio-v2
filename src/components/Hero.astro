@@ -10,10 +10,22 @@ import GrafanaPanel from "./fragments/GrafanaPanel.astro";
       <h1 class="hero__h1" id="page-title">{site.h1}</h1>
       <p class="hero__support">{site.supporting}</p>
       <div class="hero__actions">
-        <a class="button" href={`mailto:${site.email}?subject=IT%20support`}>
+        <a
+          class="button"
+          href={`mailto:${site.email}?subject=IT%20support`}
+          data-umami-event="email"
+          data-umami-event-place="hero"
+        >
           Email me
         </a>
-        <a class="hero__cv" href={site.cv}>Download CV (PDF)</a>
+        <a
+          class="hero__cv"
+          href={site.cv}
+          data-umami-event="cv-download"
+          data-umami-event-place="hero"
+        >
+          Download CV (PDF)
+        </a>
       </div>
     </div>
 

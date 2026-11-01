@@ -183,3 +183,39 @@ Y lo estratégico, por si en algún momento te tienta invertir acá: esta págin
 trabajos de SEO y los tres están hechos (búsqueda por tu nombre, tarjeta linda al pegar el
 link, no parecer rota). Nadie consigue un trabajo junior de IT Support por Google. El
 tiempo rinde más en el PDF del CV y en las tres fotos.
+
+---
+
+## Analytics (Umami self-hosted) — cableado, esperando el servidor
+
+Decidido: Umami en el homelab, publicado por el Cloudflare Tunnel que ya existe.
+Motivo: mantiene la propiedad de **cero requests a terceros** (el browser habla
+con `analytics.marcopianaroli.com`, que es dominio propio) y sin cookies no hace
+falta banner de consentimiento, que destruiría el diseño.
+
+Lo que ya está en el repo:
+
+- [x] `docker/umami/docker-compose.yml` — Umami + Postgres, bindeado a
+      `127.0.0.1:3001`, telemetría apagada, healthchecks, red `cloudflared`.
+- [x] Eventos cableados en el sitio con atributos `data-umami-event`:
+      `cv-download`, `email` (con `place`), `linkedin`, `github`. Más
+      `dns-lookup` disparado desde el island, una vez por visita.
+- [x] El script solo se emite si **las dos** variables están seteadas, así el
+      build queda limpio si algún día se apaga.
+- [x] `docs/analytics.md` — runbook completo, incluidos los dos casos de
+      cloudflared (host vs contenedor) y el orden del ingress.
+
+Lo que falta y solo podés hacer vos, porque necesita tu servidor y tu cuenta:
+
+- [ ] `cd docker/umami && cp .env.example .env`, generar los dos secretos con
+      `openssl rand -base64 32`, `docker compose up -d`.
+- [ ] Agregar `analytics.marcopianaroli.com` al ingress del túnel **antes** del
+      catch-all `http_status:404`.
+- [ ] Entrar a Umami (`admin` / `umami`), **cambiar la contraseña**, activar 2FA,
+      crear el website y copiar el UUID.
+- [ ] Setear `PUBLIC_UMAMI_SRC` y `PUBLIC_UMAMI_WEBSITE_ID` en Vercel
+      (Production) y redesplegar. Son de build time: guardar no alcanza.
+
+Advertencia: no mirar el contador de visitas. Va a dar decenas por mes y es ruido.
+El único número que significa algo es **`cv-download`**: alguien bajando el CV es
+una persona real considerándote.

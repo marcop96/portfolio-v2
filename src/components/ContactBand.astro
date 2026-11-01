@@ -21,8 +21,16 @@ import { site } from "../content/site";
 
     <div class="contact__links">
       <p class="contact__question">{site.contactQuestion}</p>
-      <a href={`mailto:${site.email}?subject=IT%20support`}>{site.email}</a>
-      <a href={site.linkedin} rel="me">LinkedIn</a>
+      <a
+        href={`mailto:${site.email}?subject=IT%20support`}
+        data-umami-event="email"
+        data-umami-event-place="contact"
+      >
+        {site.email}
+      </a>
+      <a href={site.linkedin} rel="me" data-umami-event="linkedin"
+        >LinkedIn</a
+      >
       <p class="contact__note">{site.contactNote}</p>
     </div>
   </div>

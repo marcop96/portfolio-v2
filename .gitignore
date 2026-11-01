@@ -34,3 +34,8 @@ dist-ssr
 
 # Lighthouse reports
 .lh/
+
+# Local secrets
+.env
+.env.local
+docker/umami/.env

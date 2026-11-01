@@ -19,6 +19,11 @@ const { title, description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL("/og.png", Astro.site).href;
 
+// Umami, self-hosted on the homelab. Both vars must be set or nothing ships.
+const umamiSrc = import.meta.env.PUBLIC_UMAMI_SRC;
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const analytics = Boolean(umamiSrc && umamiWebsiteId);
+
 const person = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -83,6 +88,17 @@ const person = {
     <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
+
+    {
+      analytics && (
+        <script
+          is:inline
+          defer
+          src={umamiSrc}
+          data-website-id={umamiWebsiteId}
+        />
+      )
+    }
 
     <script is:inline>
       // Runs before paint so the entrance never flashes content in and out.

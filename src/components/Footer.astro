@@ -10,8 +10,8 @@ const year = new Date().getFullYear();
       <span>{site.role}, {site.city}</span>
       <nav class="footer__links" aria-label="Elsewhere">
         <a href={`mailto:${site.email}`}>Email</a>
-        <a href={site.linkedin}>LinkedIn</a>
-        <a href={site.github}>GitHub</a>
+        <a href={site.linkedin} data-umami-event="linkedin">LinkedIn</a>
+        <a href={site.github} data-umami-event="github">GitHub</a>
       </nav>
       <span class="footer__year">{year}</span>
     </div>

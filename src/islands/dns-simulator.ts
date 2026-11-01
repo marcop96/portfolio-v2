@@ -22,6 +22,20 @@ const subdomainSwitch = root?.querySelector<HTMLInputElement>(
   "[data-dns-subdomains]",
 );
 
+declare global {
+  interface Window {
+    umami?: { track: (name: string, data?: Record<string, unknown>) => void };
+  }
+}
+
+// One event per page load, only when a visitor actually changes something.
+let tracked = false;
+const trackLookup = (blocked: boolean) => {
+  if (tracked) return;
+  tracked = true;
+  window.umami?.track("dns-lookup", { blocked });
+};
+
 const reduceMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -55,9 +69,10 @@ if (
 
   let swapTimer: number | undefined;
 
-  const render = () => {
+  const render = (userInitiated = false) => {
     readOptions();
     const result = resolve(input.value, options);
+    if (userInitiated) trackLookup(result.blocked);
 
     ruleOut.textContent = result.rule?.regex ?? "–";
     listOut.textContent = result.rule ? listLabels[result.rule.list] : "–";
@@ -81,11 +96,13 @@ if (
     }, 140);
   };
 
-  input.addEventListener("input", render);
-  listSwitches.forEach((sw) => sw.addEventListener("change", render));
-  subdomainSwitch.addEventListener("change", render);
-  modeSelect.addEventListener("change", render);
-  upstreamSelect.addEventListener("change", render);
+  input.addEventListener("input", () => render(true));
+  listSwitches.forEach((sw) =>
+    sw.addEventListener("change", () => render(true)),
+  );
+  subdomainSwitch.addEventListener("change", () => render(true));
+  modeSelect.addEventListener("change", () => render(true));
+  upstreamSelect.addEventListener("change", () => render(true));
 
   render();
 }

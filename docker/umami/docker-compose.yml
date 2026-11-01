@@ -1,0 +1,55 @@
+# Umami, self-hosted on the homelab.
+#
+# One more stack on the same Ubuntu Server, published through the Cloudflare
+# Tunnel that already fronts the other services. No cookies, so no consent
+# banner, and the browser only ever talks to a marcopianaroli.com subdomain:
+# the page keeps its zero-third-party property.
+#
+#   cd docker/umami
+#   cp .env.example .env && edit the two secrets
+#   docker compose up -d
+
+services:
+  umami-db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - umami-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami -d umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    restart: unless-stopped
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    environment:
+      DATABASE_TYPE: postgresql
+      DATABASE_URL: postgresql://umami:${POSTGRES_PASSWORD}@umami-db:5432/umami
+      APP_SECRET: ${APP_SECRET:?set APP_SECRET in .env}
+      # no phone-home
+      DISABLE_TELEMETRY: 1
+    # Bound to loopback only. Nothing on the LAN can reach it; the tunnel is
+    # the only way in. If cloudflared runs as a container instead of on the
+    # host, delete this block and use the `proxy` network below.
+    ports:
+      - "127.0.0.1:3001:3000"
+    networks:
+      - default
+      - proxy
+
+networks:
+  proxy:
+    external: true
+    name: cloudflared
+
+volumes:
+  umami-db:
