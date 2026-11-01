@@ -28,3 +28,6 @@ dist-ssr
 
 # Design measurement artifacts (taste-skill)
 .taste-skill/
+
+# Astro build metadata
+.astro/
