@@ -36,7 +36,7 @@ export const ledger: LedgerGroup[] = [
       },
       {
         name: "Compañía Urbana",
-        role: "IT support, level 1",
+        role: "IT support, 1st level",
         year: "2019–2020",
         details: [
           "Level 1 queue in ServiceDesk Plus: intake, triage, resolution, escalation.",

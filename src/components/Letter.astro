@@ -21,9 +21,7 @@ const hasMark = afterMark !== undefined;
         loading="lazy"
       />
 
-      <p>{paragraphs[0]}</p>
-      <p>{paragraphs[1]}</p>
-      <p>{paragraphs[2]}</p>
+      {paragraphs.slice(0, -1).map((paragraph) => <p>{paragraph}</p>)}
       <p>
         {beforeMark}{hasMark && (
           <span class="letter__mark">{letter.mark}</span>

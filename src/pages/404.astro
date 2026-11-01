@@ -1,0 +1,65 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../content/site";
+---
+
+<Base
+  title="Page not found — Marco Pianaroli"
+  description="That address does not exist on this site."
+  noindex={true}
+>
+  <main class="notfound">
+    <div class="frame">
+      <div class="notfound__body">
+        <h1>Nothing here.</h1>
+        <p>
+          That address does not exist. The page you are after is probably the
+          front one, which is where the IT support, the homelab and the way to
+          reach me all live.
+        </p>
+        <p class="notfound__action">
+          <a class="button" href="/">Back to the front page</a>
+        </p>
+        <p class="notfound__note">
+          Or write to <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </div>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .notfound {
+    min-height: 72svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .notfound__body {
+    grid-column: 1 / span 6;
+    max-width: 34rem;
+  }
+
+  .notfound__body p {
+    margin-block-start: clamp(20px, 2.2vw, 30px);
+  }
+
+  .notfound__action {
+    margin-block-start: clamp(28px, 3vw, 40px);
+  }
+
+  .notfound__action .button {
+    display: inline-flex;
+  }
+
+  .notfound__note {
+    font-size: var(--step-small);
+    color: var(--muted);
+  }
+
+  @media (max-width: 860px) {
+    .notfound__body {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

@@ -136,3 +136,45 @@ Lo que queda y depende de vos, no de código:
 - **www vs no-www**: decidir uno y redirigir el otro en Vercel (el canonical ya asume sin `www`).
 - **HTTPS/HSTS**: Vercel lo da por defecto; confirmar que el dominio nuevo está verificado.
 - **`og:locale`**: hoy dice `en_GB`. Si preferís `en_US`, es una línea en `src/layouts/Base.astro`.
+
+---
+
+## Auditoría SEO del 2026-11-01 (segunda pasada, completa)
+
+Corrida con el framework entero de `seo-audit`. Resultado: la base técnica está
+impecable; lo que falta es contenido y enlaces.
+
+Arreglado en esa pasada:
+
+- [x] **Los títulos de puesto que un reclutador teclea no aparecían en el texto.**
+      Grep sobre `src/content/`: `IT Support Specialist` 0, `System Administrator` 0,
+      `IT-Support` 0, `Systemadministrator` 0, `1st level` 0. Se agregó un párrafo a la
+      carta que los nombra sin relleno ("I'm after the job the ads call IT Support
+      Specialist or System Administrator, and that the German listings call IT-Support
+      or Systemadministrator") y el rol de Compañía Urbana pasó a "IT support, 1st level".
+- [x] **No existía página 404.** Ahora `src/pages/404.astro`, con `noindex, follow`.
+- [x] **Sitemap sin `lastmod`.** Pasó a ruta (`src/pages/sitemap.xml.ts`) que lo genera
+      con la fecha del build.
+
+Queda pendiente, y necesita datos tuyos:
+
+- [ ] **La página no linkea a ningún proyecto propio.** Es el hallazgo de impacto alto que
+      quedó sin resolver: el ledger nombra Job-Hub, REPS y el pipeline, pero ninguno tiene
+      URL. Un reclutador de IT no puede ver tu código y no hay señal saliente de E-E-A-T.
+      Necesito, para cada uno: repo público, demo viva, o "no es público" (en cuyo caso se
+      deja sin link, honestamente). Archivo: `src/content/ledger.ts`, agregar un campo
+      `url` opcional a cada fila de grupo "Built".
+
+Decisiones que tomé y conviene que sepas:
+
+- **El `h1` se queda como está** ("I'm the IT department.") aunque no contenga la keyword
+  primaria. Cambiarlo destruiría el golpe de la página entera; la keyword ya está en el
+  `<title>`, en la meta description, en el JSON-LD y ahora en el cuerpo de la carta.
+- **El anchor del email sigue siendo la dirección literal** (`me@marcopianaroli.com`) en
+  vez de un "Email me". Un reclutador necesita copiar la dirección al ATS.
+- **Sin política de privacidad**: cero analytics, cero cookies, cero formularios.
+
+Y lo estratégico, por si en algún momento te tienta invertir acá: esta página tiene tres
+trabajos de SEO y los tres están hechos (búsqueda por tu nombre, tarjeta linda al pegar el
+link, no parecer rota). Nadie consigue un trabajo junior de IT Support por Google. El
+tiempo rinde más en el PDF del CV y en las tres fotos.
