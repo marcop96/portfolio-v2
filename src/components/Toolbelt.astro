@@ -1,0 +1,29 @@
+---
+import { tools } from "../content/tools";
+---
+
+<section class="section toolbelt" aria-labelledby="toolbelt-title">
+  <div class="frame">
+    <div class="toolbelt__head">
+      <h2 id="toolbelt-title" data-reveal>The toolbelt</h2>
+    </div>
+
+    <div class="toolbelt__groups">
+      {
+        tools.map((group) => (
+          <div class="toolbelt__group">
+            <p class="toolbelt__group-label">{group.label}</p>
+            <div class="toolbelt__rows">
+              {group.rows.map((row) => (
+                <div class="toolbelt__row">
+                  <span class="toolbelt__tool">{row.name}</span>
+                  <span class="toolbelt__where">{row.where}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

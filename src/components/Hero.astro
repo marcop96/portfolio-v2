@@ -1,0 +1,29 @@
+---
+import { site } from "../content/site";
+import { containers, host } from "../content/homelab";
+import GrafanaPanel from "./fragments/GrafanaPanel.astro";
+---
+
+<section class="hero" aria-labelledby="page-title">
+  <div class="frame hero__frame">
+    <div class="hero__body">
+      <h1 class="hero__h1" id="page-title">{site.h1}</h1>
+      <p class="hero__support">{site.supporting}</p>
+      <div class="hero__actions">
+        <a class="button" href={`mailto:${site.email}?subject=IT%20support`}>
+          Email me
+        </a>
+        <a class="hero__cv" href={site.cv}>Download CV (PDF)</a>
+      </div>
+    </div>
+
+    <div class="hero__aside">
+      <GrafanaPanel />
+      <div class="hero__status">
+        <span><b>{host.uptimeDays}</b> days up</span>
+        <span><b>{containers.length}</b> containers</span>
+        <span><b>0</b> ports open</span>
+      </div>
+    </div>
+  </div>
+</section>

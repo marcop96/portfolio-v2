@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/marcoprofile.jpg";
+import { site } from "../content/site";
+---
+
+<section class="contact" aria-labelledby="contact-title">
+  <div class="frame contact__frame">
+    <p class="contact__statement" id="contact-title">
+      {site.contactStatement}
+    </p>
+
+    <Image
+      src={portrait}
+      alt="Marco Pianaroli"
+      width={300}
+      height={300}
+      class="contact__portrait"
+      loading="lazy"
+    />
+
+    <div class="contact__links">
+      <p class="contact__question">{site.contactQuestion}</p>
+      <a href={`mailto:${site.email}?subject=IT%20support`}>{site.email}</a>
+      <a href={site.linkedin} rel="me">LinkedIn</a>
+      <p class="contact__note">{site.contactNote}</p>
+    </div>
+  </div>
+</section>

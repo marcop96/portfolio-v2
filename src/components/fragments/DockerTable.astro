@@ -1,0 +1,31 @@
+---
+import { containers, host } from "../../content/homelab";
+---
+
+<figure class="frag" data-ui>
+  <div class="frag__head">
+    <span>docker <b>ps</b></span>
+    <span>{host.machine}</span>
+  </div>
+
+  <table class="frag__table">
+    <thead>
+      <tr>
+        <th scope="col">service</th>
+        <th scope="col" class="is-dim">ports</th>
+        <th scope="col" class="is-dim is-num">up</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        containers.map((container) => (
+          <tr>
+            <td>{container.name}</td>
+            <td class="is-dim">{container.ports}</td>
+            <td class="is-dim is-num">{container.up}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</figure>

@@ -1,0 +1,37 @@
+---
+import { ledger } from "../content/ledger";
+---
+
+<section class="section ledger" aria-labelledby="ledger-title">
+  <div class="frame">
+    <div class="ledger__head">
+      <h2 id="ledger-title" data-reveal>Service record</h2>
+    </div>
+
+    <div class="ledger__groups">
+      {
+        ledger.map((group, groupIndex) => (
+          <div class="ledger__group">
+            <p class="ledger__group-label">{group.label}</p>
+            {group.rows.map((row, rowIndex) => (
+              <details class="ledger__item" open={groupIndex === 0 && rowIndex === 0}>
+                <summary>
+                  <span class="ledger__name">{row.name}</span>
+                  <span class="ledger__role">{row.role}</span>
+                  <span class="ledger__year">{row.year}</span>
+                </summary>
+                <div class="ledger__detail">
+                  <ul>
+                    {row.details.map((detail) => (
+                      <li>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

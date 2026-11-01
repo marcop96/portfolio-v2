@@ -1,0 +1,166 @@
+---
+import { resolve, defaultOptions, sampleHosts, listLabels } from "../../lib/dns";
+
+const examples = [
+  "cdn.doubleclick.net",
+  "connect.facebook.net",
+  "coin-hive.com",
+  "fonts.gstatic.com",
+  "registry.npmjs.org",
+  "time.cloudflare.com",
+].map((hostname) => resolve(hostname, defaultOptions));
+
+const initial = resolve("cdn.doubleclick.net", defaultOptions);
+---
+
+<div class="instrument" data-dns-instrument data-ui>
+  <div class="instrument__readout">
+    <div>
+      <label class="instrument__label" for="dns-host">Hostname</label>
+      <input
+        class="instrument__input"
+        id="dns-host"
+        name="dns-host"
+        type="text"
+        value={initial.host}
+        list="dns-samples"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-describedby="dns-hint"
+      />
+      <datalist id="dns-samples">
+        {sampleHosts.map((hostname) => <option value={hostname} />)}
+      </datalist>
+    </div>
+
+    <p
+      class="instrument__verdict"
+      data-dns-verdict
+      data-state="blocked"
+      role="status"
+      aria-live="polite"
+    >
+      {initial.blocked ? "Blocked" : "Allowed"}
+    </p>
+
+    <dl class="instrument__facts">
+      <div class="instrument__fact">
+        <dt>matched</dt>
+        <dd data-dns-rule>{initial.rule?.regex ?? "–"}</dd>
+      </div>
+      <div class="instrument__fact">
+        <dt>list</dt>
+        <dd data-dns-list>
+          {initial.rule ? listLabels[initial.rule.list] : "–"}
+        </dd>
+      </div>
+      <div class="instrument__fact">
+        <dt>answer</dt>
+        <dd data-dns-answer>{initial.answer}</dd>
+      </div>
+    </dl>
+
+    <p class="instrument__hint" id="dns-hint">
+      A sample of the rules running on the Pi-hole at home. Change the settings
+      on the right and the answer changes with them.
+    </p>
+  </div>
+
+  <div class="instrument__controls">
+    <div class="control">
+      <span class="control__name" id="ctl-ads-name">Ads &amp; tracking</span>
+      <input
+        class="control__switch"
+        type="checkbox"
+        id="ctl-ads"
+        data-dns-list="ads"
+        checked
+        aria-labelledby="ctl-ads-name"
+      />
+    </div>
+    <div class="control">
+      <span class="control__name" id="ctl-malware-name">
+        Malware &amp; phishing
+      </span>
+      <input
+        class="control__switch"
+        type="checkbox"
+        id="ctl-malware"
+        data-dns-list="malware"
+        checked
+        aria-labelledby="ctl-malware-name"
+      />
+    </div>
+    <div class="control">
+      <span class="control__name" id="ctl-social-name">
+        Social &amp; telemetry
+      </span>
+      <input
+        class="control__switch"
+        type="checkbox"
+        id="ctl-social"
+        data-dns-list="social"
+        checked
+        aria-labelledby="ctl-social-name"
+      />
+    </div>
+    <div class="control">
+      <span class="control__name" id="ctl-subdomains-name">
+        Block subdomains
+      </span>
+      <input
+        class="control__switch"
+        type="checkbox"
+        id="ctl-subdomains"
+        data-dns-subdomains
+        checked
+        aria-labelledby="ctl-subdomains-name"
+      />
+    </div>
+    <div class="control">
+      <label class="control__name" for="ctl-mode">Blocking mode</label>
+      <select class="control__select" id="ctl-mode" data-dns-mode>
+        <option value="null">0.0.0.0</option>
+        <option value="nxdomain">NXDOMAIN</option>
+        <option value="ip">192.0.2.1</option>
+      </select>
+    </div>
+    <div class="control">
+      <label class="control__name" for="ctl-upstream">Upstream</label>
+      <select class="control__select" id="ctl-upstream" data-dns-upstream>
+        <option value="Cloudflare 1.1.1.1">1.1.1.1</option>
+        <option value="Quad9 9.9.9.9">9.9.9.9</option>
+        <option value="the router">Router</option>
+      </select>
+    </div>
+  </div>
+
+  <table class="dns-fallback">
+    <caption class="frag__head" style="text-align:left">
+      Six hostnames, and what the rules above do with them
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">hostname</th>
+        <th scope="col">answer</th>
+        <th scope="col">list</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        examples.map((example) => (
+          <tr>
+            <td>{example.host}</td>
+            <td>{example.blocked ? "blocked" : "allowed"}</td>
+            <td>{example.rule ? example.rule.list : "–"}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<script>
+  import "../../islands/dns-simulator";
+</script>

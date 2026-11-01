@@ -1,0 +1,55 @@
+---
+import { metrics, cpuSeries } from "../../content/homelab";
+
+const W = 240;
+const H = 44;
+const max = Math.max(...cpuSeries) * 1.15;
+const coords = cpuSeries.map((value, i) => {
+  const x = (i / (cpuSeries.length - 1)) * W;
+  const y = H - (value / max) * H;
+  return { x: Number(x.toFixed(1)), y: Number(y.toFixed(1)) };
+});
+
+const path = coords
+  .map((c, i) => `${i === 0 ? "M" : "L"}${c.x} ${c.y}`)
+  .join(" ");
+const last = coords[coords.length - 1];
+---
+
+<figure class="frag" data-ui>
+  <div class="frag__head">
+    <span>grafana <b>homelab</b></span>
+    <span>last 24 h</span>
+  </div>
+
+  <dl class="grafana__cells">
+    {
+      metrics.map((metric) => (
+        <div class="grafana__cell">
+          <dt>{metric.label}</dt>
+          <dd>
+            {metric.value}
+            {metric.unit && <small>{metric.unit}</small>}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  <div>
+    <div class="frag__head" style="margin-block-end:6px">
+      <span>cpu, server</span>
+      <span>peak {Math.max(...cpuSeries)}%</span>
+    </div>
+    <svg
+      class="grafana__chart"
+      viewBox={`0 0 ${W} ${H}`}
+      preserveAspectRatio="none"
+      role="img"
+      aria-label={`Server CPU over the last 24 hours, peaking at ${Math.max(...cpuSeries)} percent.`}
+    >
+      <path d={path}></path>
+      <circle cx={last.x} cy={last.y} r="2.6"></circle>
+    </svg>
+  </div>
+</figure>

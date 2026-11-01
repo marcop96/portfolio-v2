@@ -1,0 +1,57 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Letter from "../components/Letter.astro";
+import Ledger from "../components/Ledger.astro";
+import Homelab from "../components/Homelab.astro";
+import Toolbelt from "../components/Toolbelt.astro";
+import ContactBand from "../components/ContactBand.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../content/site";
+---
+
+<Base
+  title={`${site.name}, IT support & systems admin in Berlin`}
+  description="Four years running all the IT at a 25-person company in Berlin: endpoints, network, tickets, and a homelab on Ubuntu Server with Docker, Pi-hole, PocketBase and Grafana."
+>
+  <a class="skip" href="#page-title">Skip to content</a>
+
+  <header class="header">
+    <div class="frame header__inner">
+      <a class="header__name" href="#page-title">{site.name}</a>
+      <a class="header__link" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </header>
+
+  <main>
+    <Hero />
+    <Letter />
+    <Ledger />
+    <Homelab />
+    <Toolbelt />
+    <ContactBand />
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .skip {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .skip:focus {
+    left: 16px;
+    top: 16px;
+    z-index: 10;
+    background: var(--accent);
+    color: var(--accent-ink);
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+</style>
+
+<script>
+  import "../islands/reveal";
+</script>

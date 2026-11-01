@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/marcoprofile.jpg";
+import { letter } from "../content/site";
+
+const paragraphs = letter.paragraphs;
+const closing = paragraphs[paragraphs.length - 1];
+const [beforeMark, afterMark] = closing.split(letter.mark);
+const hasMark = afterMark !== undefined;
+---
+
+<section class="section letter" aria-label="A letter from Marco">
+  <div class="frame">
+    <div class="letter__body">
+      <Image
+        src={portrait}
+        alt="Marco Pianaroli"
+        width={88}
+        height={88}
+        class="letter__portrait"
+        loading="lazy"
+      />
+
+      <p>{paragraphs[0]}</p>
+      <p>{paragraphs[1]}</p>
+      <p>{paragraphs[2]}</p>
+      <p>
+        {beforeMark}{hasMark && (
+          <span class="letter__mark">{letter.mark}</span>
+        )}{hasMark && afterMark}
+      </p>
+
+      <p class="letter__next">{letter.nextStep}</p>
+
+      <div class="letter__signoff">
+        <span class="letter__signature">{letter.signOff}</span>
+        <span class="letter__role">{letter.signOffRole}</span>
+      </div>
+    </div>
+
+    <dl class="letter__facts">
+      {
+        letter.facts.map((fact) => (
+          <div class="letter__fact">
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>

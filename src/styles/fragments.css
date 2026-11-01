@@ -1,0 +1,373 @@
+/* Interface fragments. These are readouts of real tools, so they are allowed
+   the quiet borders and hairlines a marketing page is not. Marked data-ui. */
+
+.frag {
+  background: var(--surface);
+  border: 1px solid #24382c;
+  padding: 18px 20px 20px;
+  display: grid;
+  gap: 16px;
+  font-size: 13px;
+}
+
+.frag__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.frag__head b {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.frag__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.frag__table th {
+  text-align: left;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 13px;
+  padding-block: 0 8px;
+  border-bottom: 1px solid #24382c;
+}
+
+.frag__table td {
+  padding-block: 8px;
+  border-bottom: 1px solid #1c2f24;
+  color: var(--ink);
+  font-size: 14px;
+  vertical-align: baseline;
+}
+
+.frag__table tr:last-child td {
+  border-bottom: 0;
+}
+
+.frag__table td.is-dim,
+.frag__table th.is-dim {
+  color: var(--muted);
+}
+
+.frag__table .is-num {
+  text-align: right;
+}
+
+/* ---- grafana readout ---------------------------------------------------- */
+
+.grafana__cells {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 34px;
+}
+
+.grafana__cell {
+  display: grid;
+  gap: 2px;
+}
+
+.grafana__cell dt {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.grafana__cell dd {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 500;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.grafana__cell dd small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-inline-start: 4px;
+}
+
+.grafana__chart {
+  display: block;
+  width: 100%;
+  height: 46px;
+  overflow: visible;
+}
+
+.grafana__chart path {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.grafana__chart circle {
+  fill: var(--accent);
+}
+
+.js .grafana__chart.is-drawn path {
+  stroke-dasharray: 620;
+  stroke-dashoffset: 620;
+  animation: chart-draw 1100ms var(--ease) 200ms forwards;
+}
+
+@keyframes chart-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---- the instrument ----------------------------------------------------- */
+
+.instrument {
+  background: var(--surface);
+  border: 1px solid #24382c; /* taste-skill-ignore: readout panel of a data-ui fragment */
+  display: grid;
+  grid-template-columns: 62fr 38fr;
+  min-height: 380px;
+}
+
+.instrument__readout {
+  padding: clamp(20px, 2.4vw, 30px);
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  border-inline-end: 1px solid #24382c;
+}
+
+.instrument__label {
+  font-size: 13px;
+  color: var(--muted);
+  display: block;
+  margin-block-end: 6px;
+}
+
+.instrument__input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #35503f; /* taste-skill-ignore: a text field's rule */
+  color: var(--ink);
+  font: inherit;
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  padding-block: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.instrument__input::placeholder {
+  color: #6b8074;
+}
+
+.instrument__input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-bottom-color: transparent;
+}
+
+.instrument__verdict {
+  font-size: clamp(1.375rem, 1.1rem + 1.1vw, 1.875rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 10px 14px;
+  justify-self: start;
+  transition:
+    opacity 140ms var(--ease),
+    transform 140ms var(--ease);
+}
+
+.instrument__verdict[data-state="allowed"] {
+  background: var(--surface-2);
+  color: var(--ink);
+  outline: 1px solid #35503f;
+  outline-offset: -1px;
+}
+
+.instrument__verdict.is-swapping {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.instrument__facts {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.instrument__fact {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.instrument__fact dt {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.instrument__fact dd {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.instrument__hint {
+  font-size: 13px;
+  color: var(--muted);
+  align-self: end;
+}
+
+/* controls */
+
+.instrument__controls {
+  padding: clamp(14px, 1.6vw, 20px) clamp(16px, 1.8vw, 24px);
+  display: grid;
+  align-content: start;
+  background: var(--surface-2);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 44px;
+  font-size: 13.5px;
+  color: var(--ink);
+}
+
+.control + .control {
+  border-top: 1px solid #24382c; /* taste-skill-ignore: table-like rows inside a data-ui fragment */
+}
+
+.control__name {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.control__switch {
+  appearance: none;
+  width: 34px;
+  height: 18px;
+  background: #2b4133;
+  border-radius: 9px;
+  position: relative;
+  cursor: pointer;
+  flex: none;
+  transition: background-color 180ms var(--ease);
+}
+
+.control__switch::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-start: 3px;
+  width: 12px;
+  height: 12px;
+  background: var(--muted);
+  border-radius: 50%;
+  transition:
+    transform 180ms var(--ease),
+    background-color 180ms var(--ease);
+}
+
+.control__switch:checked {
+  background: var(--accent);
+}
+
+.control__switch:checked::after {
+  transform: translateX(16px);
+  background: var(--accent-ink);
+}
+
+.control__switch:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.control__select {
+  appearance: none;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid #35503f; /* taste-skill-ignore: a select control, not a decorative box */
+  font: inherit;
+  font-size: 13px;
+  padding: 5px 8px;
+  max-width: 128px;
+  cursor: pointer;
+}
+
+.control__select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* the table shown when the script does not run */
+.dns-fallback {
+  grid-column: 1 / -1;
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.dns-fallback th,
+.dns-fallback td {
+  text-align: left;
+  padding-block: 7px;
+  border-bottom: 1px solid #24382c;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.dns-fallback th {
+  color: var(--muted);
+}
+
+.dns-fallback td {
+  color: var(--ink);
+}
+
+.dns-fallback td:nth-child(2) {
+  color: var(--muted);
+}
+
+.js .dns-fallback {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .instrument {
+    grid-template-columns: 1fr;
+  }
+
+  .instrument__readout {
+    border-inline-end: 0;
+    border-block-end: 1px solid #24382c;
+  }
+
+  .control {
+    min-height: 52px;
+  }
+
+  .control__select {
+    max-width: 150px;
+  }
+
+  .grafana__cells {
+    gap: 12px 26px;
+  }
+}

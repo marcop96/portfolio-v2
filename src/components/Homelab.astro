@@ -1,0 +1,68 @@
+---
+import DockerTable from "./fragments/DockerTable.astro";
+import CloudflareIngress from "./fragments/CloudflareIngress.astro";
+import PocketBaseList from "./fragments/PocketBaseList.astro";
+import DnsInstrument from "./fragments/DnsInstrument.astro";
+import { host } from "../content/homelab";
+---
+
+<section class="section homelab" aria-labelledby="homelab-title">
+  <div class="frame homelab__frame">
+    <div class="homelab__head">
+      <h2 id="homelab-title" data-reveal>It runs on a laptop.</h2>
+    </div>
+
+    <div class="homelab__text">
+      <p>
+        An old laptop that stopped being fast enough for anything else, with
+        Ubuntu Server on it. Everything runs in Docker, and everything was put
+        back automatically the last time the power went out.
+      </p>
+      <p class="homelab__fact">{host.uptimeDays} days since the last reboot.</p>
+    </div>
+    <div class="homelab__panel">
+      <DockerTable />
+    </div>
+
+    <div class="homelab__text">
+      <p>
+        Nothing is port-forwarded. Every service is published through a
+        Cloudflare Tunnel, so the only thing the router exposes is nothing at
+        all, and the certificates renew themselves.
+      </p>
+      <p class="homelab__fact">Zero ports open on the router.</p>
+    </div>
+    <div class="homelab__panel">
+      <CloudflareIngress />
+    </div>
+
+    <div class="homelab__text">
+      <p>
+        One PocketBase instance holds the data behind everything I build: job
+        applications, training sessions, video pipeline runs. Six collections,
+        one backup path, no spreadsheet anywhere.
+      </p>
+      <p class="homelab__fact num">5 108 records, backed up nightly.</p>
+    </div>
+    <div class="homelab__panel">
+      <PocketBaseList />
+    </div>
+
+    <div class="homelab__text">
+      <p>
+        And the part that is actually about support: DNS. Most of what a helpdesk
+        does all day is a DNS question wearing a costume. Type a hostname and see
+        what my Pi-hole does with it.
+      </p>
+      <p class="homelab__fact">13 regex rules across three blocklists.</p>
+    </div>
+    <div class="homelab__panel homelab__panel--instrument">
+      <DnsInstrument />
+    </div>
+
+    <p class="homelab__note">
+      {host.os}. Every number on this page was read off the machine, not
+      estimated.
+    </p>
+  </div>
+</section>

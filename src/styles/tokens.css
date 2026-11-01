@@ -1,0 +1,35 @@
+/* Design tokens. Nothing downstream may invent a value. */
+
+:root {
+  /* colour: bottle ink / yellow, inverted to a dark ground.
+     Proportions kept from the dealt sheet: one ground, one ink, one accent, one field. */
+  --bg: #0b1a13;
+  --surface: #14261c;
+  --surface-2: #1b2f23;
+  --ink: #edede8;
+  --muted: #8fa396;
+  --accent: #f6e016;
+  --accent-ink: #0b1a13;
+  --field-contact: #f6e016;
+
+  /* type: one family, two weights, five steps. */
+  --font: "Jost", ui-sans-serif, system-ui, sans-serif;
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(1.75rem, 1.15rem + 2.6vw, 3rem);
+  --step-h1: clamp(2.5rem, 5vw, 4.75rem);
+  --step-contact: clamp(1.375rem, 1rem + 1.9vw, 2.25rem);
+
+  /* frame: one pair of equal outer margins at every width. */
+  --margin: clamp(20px, 5.6vw, 80px);
+  --frame: min(1280px, 100vw - 2 * var(--margin));
+  --gutter: clamp(16px, 1.7vw, 24px);
+
+  /* vertical rhythm. */
+  --gap-section: clamp(96px, 8.5vw, 140px);
+  --gap-block: clamp(32px, 3.4vw, 52px);
+
+  /* the one interaction curve. */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}

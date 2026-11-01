@@ -1,0 +1,29 @@
+---
+import { ingress } from "../../content/homelab";
+---
+
+<figure class="frag" data-ui>
+  <div class="frag__head">
+    <span>cloudflared <b>ingress</b></span>
+    <span>no port forwarding</span>
+  </div>
+
+  <table class="frag__table">
+    <thead>
+      <tr>
+        <th scope="col">hostname</th>
+        <th scope="col" class="is-dim">goes to</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        ingress.map((row) => (
+          <tr>
+            <td>{row.host}</td>
+            <td class="is-dim">{row.target}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</figure>

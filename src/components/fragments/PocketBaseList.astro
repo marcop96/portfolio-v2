@@ -1,0 +1,31 @@
+---
+import { collections } from "../../content/homelab";
+---
+
+<figure class="frag" data-ui>
+  <div class="frag__head">
+    <span>pocketbase <b>collections</b></span>
+    <span>one instance</span>
+  </div>
+
+  <table class="frag__table">
+    <thead>
+      <tr>
+        <th scope="col">collection</th>
+        <th scope="col" class="is-dim is-num">records</th>
+        <th scope="col" class="is-dim is-num">size</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        collections.map((collection) => (
+          <tr>
+            <td>{collection.name}</td>
+            <td class="is-dim is-num">{collection.records}</td>
+            <td class="is-dim is-num">{collection.size}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</figure>

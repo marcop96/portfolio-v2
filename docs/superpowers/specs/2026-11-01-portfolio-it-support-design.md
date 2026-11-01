@@ -463,3 +463,38 @@ Bloquean la publicación, no el arranque:
 - Formulario de contacto (el email es el canal; un formulario agrega back-end y spam).
 - Modo claro / theme switcher.
 - Rediseño del PDF del CV (se hace después, por separado).
+
+---
+
+## 11. Registro de desviaciones
+
+La skill exige documentar cada slot redibujado y por qué. Orden de prevalencia aplicado:
+reglas de la casa → dirección → sistema de tipo y paleta → blueprint del hero → blueprints de sección.
+
+| Slot | Desviación | Motivo |
+|---|---|---|
+| **paleta** | Proporciones invertidas: el suelo pasa a verde botella casi negro y la tinta a off-white. Colores y proporciones conservados. | El modo oscuro por default es una restricción de marca declarada por Marco. |
+| **hero** | Redibujado: se usa la composición del §2 de la carta (headline a 5vw + frase de apoyo + un botón + un link) en lugar de "Two doors on a dark wall". El lateral derecho lo cierra el fragmento de Grafana. | El blueprint pedía dos retratos 3:4 para una elección entre dos mitades. No existen esas fotos, y la primera pantalla tiene que decir quién y qué hace en un `h1`, no ofrecer una bifurcación. |
+| **hero** | `--step-h1` a 5vw (72 px a 1440) en vez del punto medio 5–7vw. | Medido: 2 líneas a 1440, 1 línea a 768, 2 líneas a 390. El mínimo de la regla `focal-point` es 4,5vw. |
+| **work (libreta)** | La previsualización fotográfica al hover se reemplaza por un `<details>` nativo cuyo detalle se abre en la mitad derecha. | No existen fotografías de los lugares de trabajo pasados. Fabricar un screenshot de una cola de tickets que nunca existió sería deshonesto. Además elimina todo el JS de esa sección. |
+| **work + list** | Filas a lo ancho del marco en vez de una columna de 520 px arrancando al 22%. | Medido: con la columna angosta, la libreta dejaba 76% del ancho vacío y la lista de herramientas 86%, lo que dispara `lopsided` (FAIL). El regla del marco tiene prioridad sobre el ancho de columna del blueprint. Se conservan las lecturas de dos extremos y de tres posiciones fijas. |
+| **about (carta)** | Anclada al borde izquierdo en vez de centrada, más una columna de datos a la derecha (dónde vive, idiomas, derecho a trabajar). | Medido: centrada dejaba 820 px vacíos (`lopsided`, FAIL). La columna de datos además es lo primero que escanea un reclutador en Berlín. |
+| **contact** | La frase se limita a 36 px / 3 líneas, y a 23,4 px en móvil, en vez de los 44 px del display. | Medido: a 44 px un jurado lee una frase de tres líneas como un headline largo (`headline-lines`, FAIL a 390 px). |
+| **motion** | La dirección es *stillness* y prohíbe animaciones de entrada; las reglas de la casa exigen ≥ 8 elementos en movimiento. | Resuelto abajo: secuencia de carga del hero, entrada por heading de sección, apertura del `<details>`, feedback de controles, cambio de veredicto, dibujo de la sparkline. `prefers-reduced-motion` conserva todo el contenido y elimina el desplazamiento. |
+| **tokens** | `--ink` de `#f2f1ea` a `#edede8`. | El off-white cálido caía en la familia "cream" del detector de paleta (`palette-cream`, WARN). |
+| **imágenes** | 4 fragmentos de interfaz construidos en HTML + 1 fotografía, en vez de fotografías del mundo del sujeto. | El sujeto es software: la skill indica que para software su propia interfaz cuenta como imagen real. La "imagen en movimiento" es la sparkline de Grafana dibujándose. Quedan 2 WARN (`no-real-pictures`, `no-footage`) pendientes de fotos propias de Marco. |
+
+## 12. Resultado medido (2026-11-01)
+
+```
+lint.mjs  src/                          0 FAIL, 0 WARN
+inspect.mjs  build de producción        0 FAIL, 2 WARN  @1440 / 768 / 390
+  tipografías   Jost 100% (auto-hospedada)
+  headline      72px (5vw), 2 líneas a 1440, 2 a 390
+  tamaños       14 / 19 / 26 / 36 / 48 / 72 px
+  color         suelo #0b1a13 · campo #f6e016 · botón #f6e016
+  peso          7,5 KB HTML + 4,4 KB CSS (gzip), 0 KB de runtime de framework
+```
+
+Los dos WARN restantes son el piso de imágenes (`no-real-pictures`, `no-footage`) y se
+resuelven con material propio de Marco, no con stock.

@@ -1,0 +1,46 @@
+---
+import "@fontsource/jost/latin-400.css";
+import "@fontsource/jost/latin-500.css";
+import "@fontsource/jost/latin-700.css";
+import "@fontsource/jost/latin-400-italic.css";
+import "../styles/tokens.css";
+import "../styles/base.css";
+import "../styles/sections.css";
+import "../styles/fragments.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b1a13" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.site} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      // Runs before paint so the entrance never flashes content in and out.
+      (function () {
+        var reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        if (!reduce) document.documentElement.classList.add("js");
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
