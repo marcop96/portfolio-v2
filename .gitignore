@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Visual brainstorming
+.superpowers/
+
+# Design measurement artifacts (taste-skill)
+.taste-skill/
