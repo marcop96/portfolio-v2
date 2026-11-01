@@ -11,13 +11,18 @@ Estado del build al 2026-11-01: `lint.mjs` 0 FAIL / 0 WARN · `inspect.mjs` 0 FA
 
 ## Bloqueante para publicar
 
-- [ ] **El PDF del CV todavía dice "Frontend Developer".** `public/cv/marco-pianaroli-cv.pdf`
-      es el PDF viejo, sin tocar. La primera línea dice
-      `IT Support - Frontend Developer`, el ABOUT ME habla de front-end, y las
-      certificaciones listan Vue/Nuxt. Si alguien hace clic en *Download CV* desde la página
-      nueva, recibe el candidato viejo. Hay que rehacerlo con la misma tesis del sitio:
-      IT support y administración, homelab, Cloudflare Tunnel, DNS, Docker.
-      Mientras tanto, la página nueva y el PDF se contradicen.
+- [x] ~~El PDF del CV todavía dice "Frontend Developer"~~ — hecho. El CV se construyó como
+      página Astro (`src/pages/cv.astro`, noindex) con los mismos tokens del sitio y se imprime a
+      PDF con Chrome headless: **1 página A4, 37 KB, texto real** (el ATS lo parsea).
+      Vive en `public/cv/marco-pianaroli-cv.pdf`, que es lo que sirve el botón del sitio.
+      Regenerar con: `npm run build` → `astro preview` → Chrome `--print-to-pdf` sobre `/cv`.
+
+      Corregido en ese CV: se sacó la mención a Ströer (lo hacía inutilizable en cualquier otra
+      empresa), se sacó la certificación de EducaciónIT (no cuenta), se cambió "100% operational
+      uptime" por afirmaciones sostenibles, y **se agregó el homelab** (Docker, Pi-hole, Grafana,
+      Cloudflare Tunnel), que era lo más grave que faltaba.
+
+      El CV es genérico por decisión: los custom por empresa los manda él por fuera.
 
 - [ ] **Confirmar el deploy y el dominio.** El sitio es estático en `dist/`. `marcopianaroli.com`
       tiene que apuntar al proyecto nuevo en Vercel, y los subdominios de los proyectos

@@ -34,7 +34,7 @@ export const letter = {
     { label: "Based in", value: "Berlin, since 2021" },
     {
       label: "Languages",
-      value: "Spanish native, English C1, German B1",
+      value: "Spanish native, English C2, German B1",
     },
     {
       label: "Right to work",

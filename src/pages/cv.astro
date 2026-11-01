@@ -1,0 +1,402 @@
+---
+import "@fontsource/jost/latin-400.css";
+import "@fontsource/jost/latin-500.css";
+import "@fontsource/jost/latin-700.css";
+import "../../src/styles/tokens.css";
+
+const contact = [
+  { text: "Berlin, Germany" },
+  { text: "+49 1522 5431989", href: "tel:+4915225431989" },
+  { text: "me@marcopianaroli.com", href: "mailto:me@marcopianaroli.com" },
+  { text: "marcopianaroli.com", href: "https://marcopianaroli.com" },
+];
+
+const experience = [
+  {
+    title: "IT Support Specialist / IT Administrator",
+    org: "Okapi GmbH",
+    where: "Berlin",
+    when: "Aug 2022 – present",
+    bullets: [
+      "Sole IT contact for 25 people: laptops, printers, phones and the office network, at roughly 25 tickets a week.",
+      "Diagnose and resolve hardware and software incidents across Windows, macOS and Linux, on site and remotely.",
+      "Administer Microsoft 365, Entra ID and Active Directory: accounts, groups, access permissions and device onboarding.",
+      "Own system updates and security patching across the device fleet, and the asset inventory behind it.",
+      "Built internal scripts and automations that removed repeat tickets from the queue.",
+      "Also carry the webmaster work: front-end changes, SEO, updates and maintenance.",
+    ],
+  },
+  {
+    title: "IT Support, 1st level",
+    org: "Compañía Urbana",
+    where: "Buenos Aires",
+    when: "Aug 2019 – Oct 2020",
+    bullets: [
+      "Full incident lifecycle in ServiceDesk Plus, from intake and triage to resolution and escalation, to SLA.",
+      "Remote and on-site end-user support with TeamViewer and AnyDesk.",
+      "Administered user accounts and access permissions in the Microsoft 365 ecosystem (Teams, Outlook).",
+      "Component-level hardware repair: RAM, disks, power supplies.",
+    ],
+  },
+  {
+    title: "Administrative Assistant / Help Desk",
+    org: "Cencosud",
+    where: "Buenos Aires",
+    when: "Oct 2016 – Oct 2018",
+    bullets: [
+      "Help desk support and technical onboarding for new employees.",
+      "Data entry and administrative systems supporting company-wide operations.",
+    ],
+  },
+];
+
+const homelab = [
+  "Self-hosted on Ubuntu Server, on a laptop that stopped being fast enough for anything else. Up 214 days.",
+  "Four Docker services with restart policies and named volumes: Pi-hole for DNS filtering, PocketBase for databases, Grafana for monitoring, cloudflared for ingress.",
+  "Published through Cloudflare Tunnels instead of port forwarding, so nothing on the router is exposed.",
+  "Grafana watches the server and a desktop host; Pi-hole runs 13 regex rules across three blocklists.",
+];
+
+const skillGroups = [
+  {
+    label: "Microsoft & identity",
+    items: "Microsoft 365 (Teams, Outlook, Exchange), Entra ID, Active Directory",
+  },
+  {
+    label: "Systems",
+    items: "Windows, macOS, Linux (Ubuntu, Debian), hardware repair and build",
+  },
+  {
+    label: "Containers & servers",
+    items: "Docker, Docker Compose, volumes and restart policies, Ubuntu Server",
+  },
+  {
+    label: "Network",
+    items: "DNS and DHCP, Pi-hole, Cloudflare Tunnel, LAN diagnostics",
+  },
+  {
+    label: "Support tooling",
+    items: "ServiceDesk Plus, TeamViewer, AnyDesk, remote triage, user onboarding",
+  },
+  {
+    label: "Build",
+    items: "Bash, Python, TypeScript, Vue, Git, Grafana",
+  },
+];
+
+const education = [
+  {
+    title: "Software Testing and Version Control (Git)",
+    org: "EducaciónIT, Buenos Aires",
+    when: "2017 – 2019",
+  },
+  {
+    title: "High School Diploma, Economics and Business Administration",
+    org: "Instituto Cardenal Spínola, Buenos Aires",
+    when: "2014",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Marco Pianaroli — CV</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <main class="sheet">
+      <header class="head">
+        <h1>Marco Pianaroli</h1>
+        <p class="head__role">IT Support Specialist / IT Administrator</p>
+        <ul class="head__contact">
+          {
+            contact.map((item) => (
+              <li>
+                {item.href ? <a href={item.href}>{item.text}</a> : item.text}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="head__rights">
+          Italian citizen, full right to work in Germany. English C2, German B1,
+          Spanish native.
+        </p>
+      </header>
+
+      <section class="block">
+        <h2>Profile</h2>
+        <p class="profile">
+          IT support specialist with four years running the entire IT function
+          for a 25-person company in Berlin. Sole point of contact for endpoints,
+          the office network and roughly 25 tickets a week across Windows, macOS
+          and Linux, and the administrator of its Microsoft 365, Entra ID and
+          Active Directory. I also run a self-hosted homelab on Ubuntu Server
+          with Docker, Pi-hole and Cloudflare Tunnels, because I would rather
+          understand what I support than relay it to a vendor.
+        </p>
+      </section>
+
+      <section class="block">
+        <h2>Experience</h2>
+        {
+          experience.map((job) => (
+            <article class="job">
+              <div class="job__head">
+                <h3>{job.title}</h3>
+                <span class="job__when">{job.when}</span>
+              </div>
+              <p class="job__org">
+                {job.org}, {job.where}
+              </p>
+              <ul class="job__bullets">
+                {job.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </section>
+
+      <section class="block">
+        <h2>Homelab</h2>
+        <ul class="job__bullets">
+          {homelab.map((line) => <li>{line}</li>)}
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Skills</h2>
+        <dl class="skills">
+          {
+            skillGroups.map((group) => (
+              <div class="skills__row">
+                <dt>{group.label}</dt>
+                <dd>{group.items}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+
+      <section class="block">
+        <h2>Education</h2>
+        {
+          education.map((item) => (
+            <article class="job job--tight">
+              <div class="job__head">
+                <h3>{item.title}</h3>
+                <span class="job__when">{item.when}</span>
+              </div>
+              <p class="job__org">{item.org}</p>
+            </article>
+          ))
+        }
+      </section>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --paper: #fbfbf9;
+    --cv-ink: #0b1a13;
+    --cv-muted: #5c6b62;
+    --cv-accent: #f6e016;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #e9eae6;
+    color: var(--cv-ink);
+    font-family: var(--font);
+    font-size: 9.1pt;
+    line-height: 1.33;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 14mm 15mm 12mm;
+    background: var(--paper);
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  dl,
+  dd,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  h1 {
+    font-size: 23pt;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .head__role {
+    margin-block-start: 2.4mm;
+    font-size: 11pt;
+    font-weight: 500;
+  }
+
+  .head__role::after {
+    content: "";
+    display: block;
+    width: 24mm;
+    height: 2mm;
+    margin-block-start: 2.6mm;
+    background: var(--cv-accent);
+  }
+
+  .head__contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 5mm;
+    margin-block-start: 2.8mm;
+    font-size: 9pt;
+    color: var(--cv-muted);
+  }
+
+  .head__contact a {
+    color: var(--cv-muted);
+    text-decoration: none;
+  }
+
+  .head__rights {
+    margin-block-start: 1.6mm;
+    font-size: 9pt;
+    color: var(--cv-muted);
+  }
+
+  .block {
+    margin-block-start: 4.3mm;
+  }
+
+  h2 {
+    font-size: 8.6pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    color: var(--cv-muted);
+    margin-block-end: 2.1mm;
+  }
+
+  .profile {
+    max-width: 168mm;
+  }
+
+  .job + .job {
+    margin-block-start: 3mm;
+  }
+
+  .job--tight + .job--tight {
+    margin-block-start: 2.4mm;
+  }
+
+  .job__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4mm;
+  }
+
+  h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .job__when {
+    font-size: 9.2pt;
+    color: var(--cv-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .job__org {
+    font-size: 9.4pt;
+    color: var(--cv-muted);
+    margin-block-start: 0.6mm;
+  }
+
+  .job__bullets {
+    margin-block-start: 1.5mm;
+    display: grid;
+    gap: 0.75mm;
+  }
+
+  .job__bullets li {
+    padding-inline-start: 3.4mm;
+    position: relative;
+  }
+
+  .job__bullets li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.5em;
+    width: 1.4mm;
+    height: 1.4mm;
+    background: var(--cv-muted);
+  }
+
+  .skills {
+    display: grid;
+    gap: 1mm;
+  }
+
+  .skills__row {
+    display: grid;
+    grid-template-columns: 34mm 1fr;
+    gap: 3mm;
+    align-items: baseline;
+  }
+
+  .skills__row dt {
+    font-size: 8.6pt;
+    color: var(--cv-muted);
+  }
+
+  .skills__row dd {
+    margin: 0;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  @media print {
+    body {
+      background: transparent;
+    }
+
+    .sheet {
+      width: auto;
+      min-height: auto;
+      margin: 0;
+      padding: 10mm 13mm;
+    }
+  }
+</style>
