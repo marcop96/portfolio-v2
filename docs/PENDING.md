@@ -66,11 +66,10 @@ Estado del build al 2026-11-01: `lint.mjs` 0 FAIL / 0 WARN · `inspect.mjs` 0 FA
       *"Studying for Network+"*. Archivo: `src/content/site.ts` → `letter.nextStep`.
       Si te anotás, además suma poner la fecha de examen.
 
-- [ ] **Imagen para compartir (Open Graph).** `Base.astro` tiene `og:title`,
-      `og:description` y `og:url`, pero **no `og:image`**. Cuando pegues el link en LinkedIn
-      o en un mail, aparece solo texto. Necesita una imagen 1200×630: el headline
-      `I'M THE IT DEPARTMENT.` sobre el verde botella alcanza y sobra. Va en
-      `public/og.png` + la meta tag en `src/layouts/Base.astro`.
+- [x] ~~Imagen para compartir (Open Graph)~~ — hecha. `public/og.png`, 1200×630 reales, sacada del
+      hero con Chrome headless y recortada con sharp (23 KB). Con `og:image`,
+      `og:image:width`/`height`/`alt`, `twitter:card` y `og:site_name`. Para regenerarla:
+      capturar a 1200×750 y recortar los primeros 630 px.
 
 - [ ] **Los otros dos proyectos.** REPS y el pipeline de video siguen siendo placeholder
       (una línea genérica cada uno). Job-Hub ya está reescrito con datos reales de tu wiki:
@@ -111,3 +110,29 @@ Estado del build al 2026-11-01: `lint.mjs` 0 FAIL / 0 WARN · `inspect.mjs` 0 FA
 
 - [ ] **Email.** El sitio unifica todo en `me@marcopianaroli.com` (el CV también). El
       `pianarolimarco@gmail.com` del sitio viejo quedó eliminado por completo.
+
+---
+
+## SEO — cerrado el 2026-11-01
+
+Auditoría corrida con `coreyhaines31/marketingskills@seo-audit` (57,7k ⭐) más
+`addyosmani/web-quality-skills@seo` y Lighthouse. Encontrado y corregido:
+
+| Hueco | Estado |
+|---|---|
+| Sin `rel="canonical"` | ✅ self-referencing a `https://marcopianaroli.com/` |
+| Sin datos estructurados | ✅ JSON-LD `Person` (name, jobTitle, address Berlín, knowsAbout, sameAs) |
+| Sin `og:image` | ✅ `public/og.png` 1200×630, 23 KB |
+| Sin `og:site_name` ni `twitter:title/description/image` | ✅ |
+| Sin `robots.txt` ni `sitemap.xml` | ✅ |
+| Meta description de 180 caracteres (Google corta en ~155) | ✅ 153 |
+| Sin `max-image-preview:large` | ✅ en el meta robots |
+| **Tap target del switch: 34×18 px** (falla WCAG 2.5.8, mínimo 24×24) | ✅ área de click 46×44 sin cambiar el aspecto, y el `<label>` ahora es clickeable |
+| Selects de 28 px de alto | ✅ 32 en desktop, 44 en móvil |
+
+Lo que queda y depende de vos, no de código:
+
+- **Search Console**: dar de alta el dominio y enviar `https://marcopianaroli.com/sitemap.xml`.
+- **www vs no-www**: decidir uno y redirigir el otro en Vercel (el canonical ya asume sin `www`).
+- **HTTPS/HSTS**: Vercel lo da por defecto; confirmar que el dominio nuevo está verificado.
+- **`og:locale`**: hoy dice `en_GB`. Si preferís `en_US`, es una línea en `src/layouts/Base.astro`.

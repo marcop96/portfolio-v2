@@ -69,53 +69,43 @@ const initial = resolve("cdn.doubleclick.net", defaultOptions);
 
   <div class="instrument__controls">
     <div class="control">
-      <span class="control__name" id="ctl-ads-name">Ads &amp; tracking</span>
+      <label class="control__name" for="ctl-ads">Ads &amp; tracking</label>
       <input
         class="control__switch"
         type="checkbox"
         id="ctl-ads"
         data-dns-list="ads"
         checked
-        aria-labelledby="ctl-ads-name"
       />
     </div>
     <div class="control">
-      <span class="control__name" id="ctl-malware-name">
-        Malware &amp; phishing
-      </span>
+      <label class="control__name" for="ctl-malware">Malware &amp; phishing</label>
       <input
         class="control__switch"
         type="checkbox"
         id="ctl-malware"
         data-dns-list="malware"
         checked
-        aria-labelledby="ctl-malware-name"
       />
     </div>
     <div class="control">
-      <span class="control__name" id="ctl-social-name">
-        Social &amp; telemetry
-      </span>
+      <label class="control__name" for="ctl-social">Social &amp; telemetry</label>
       <input
         class="control__switch"
         type="checkbox"
         id="ctl-social"
         data-dns-list="social"
         checked
-        aria-labelledby="ctl-social-name"
       />
     </div>
     <div class="control">
-      <span class="control__name" id="ctl-subdomains-name">
-        Block subdomains
-      </span>
+      <label class="control__name" for="ctl-subdomains">Block subdomains</label>
       <input
         class="control__switch"
         type="checkbox"
         id="ctl-subdomains"
         data-dns-subdomains
         checked
-        aria-labelledby="ctl-subdomains-name"
       />
     </div>
     <div class="control">

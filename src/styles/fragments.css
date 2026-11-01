@@ -271,6 +271,14 @@
   transition: background-color 180ms var(--ease);
 }
 
+/* WCAG 2.5.8: the visual switch is 34x18, so the hit area is grown to 46x44
+   without changing how it looks. The <label> beside it is clickable too. */
+.control__switch::before {
+  content: "";
+  position: absolute;
+  inset: -13px -6px;
+}
+
 .control__switch::after {
   content: "";
   position: absolute;
@@ -307,6 +315,7 @@
   font: inherit;
   font-size: 13px;
   padding: 5px 8px;
+  min-height: 32px;
   max-width: 128px;
   cursor: pointer;
 }
@@ -364,6 +373,7 @@
   }
 
   .control__select {
+    min-height: 44px;
     max-width: 150px;
   }
 
