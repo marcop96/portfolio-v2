@@ -437,24 +437,14 @@ Nada de esto es opinión: se mide.
 
 ---
 
-## 9. Pendientes que requieren datos de Marco
+## 9. Pendientes
 
-Bloquean la publicación, no el arranque:
+El checklist vivo está en [`docs/PENDING.md`](../PENDING.md), agrupado por bloqueante / alto impacto /
+no bloqueante, con el archivo exacto y el valor actual de cada dato a corregir.
 
-1. **Cantidad de dispositivos** en Okapi (¿~30? ¿~40?). Hoy el copy evita el número; si aparece uno,
-   tiene que ser sostenible en una entrevista.
-2. **Certificación:** cuál de las dos y a partir de cuándo. Hasta entonces queda la frase de arriba.
-3. **Homelab:** modelo de la notebook, servicios completos de Docker (¿Portainer? ¿Uptime Kuma?
-   ¿Nginx?), si hay backup y con qué, si Grafana lee Prometheus o sólo node-exporter.
-4. **Dump de reglas de Pi-hole** — necesito exportar los regex reales de sus listas para
-   `piHoleRules.ts`.
-5. **Los 3 proyectos** (Job-Hub, REPS, pipeline de video): stack, estado, repo público. Hoy quedan
-   como placeholder.
-6. **PDF del CV nuevo.** Hasta entonces, el actual.
-7. **Fotos:** notebook, Grafana, `docker ps`.
-8. **VLANs:** ¿sí o no?
-
----
+Resumen de lo bloqueante: el PDF del CV todavía dice "Frontend Developer"; falta confirmar el
+deploy y el dominio (incluidos los subdominios de los proyectos); y los números del homelab que
+puse yo (uptime, registros de PocketBase, años de los contenedores) tienen que ser confirmados.
 
 ## 10. Fuera de alcance
 
