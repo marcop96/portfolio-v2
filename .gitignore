@@ -31,3 +31,6 @@ dist-ssr
 
 # Astro build metadata
 .astro/
+
+# Lighthouse reports
+.lh/

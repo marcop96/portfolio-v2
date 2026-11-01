@@ -95,16 +95,16 @@ Estado del build al 2026-11-01: `lint.mjs` 0 FAIL / 0 WARN · `inspect.mjs` 0 FA
 - [ ] **Analytics.** El sitio viejo tenía `@vercel/analytics` y lo eliminé junto con el plugin
       de Nuxt. Decidir si vuelve (una línea de script en `Base.astro`) o si no hace falta.
 
-- [ ] **`robots.txt` y `sitemap`.** No existen. Con una página sola no es urgente, pero es
-      gratis y evita que Google indexe cualquier cosa rara.
+- [x] ~~`robots.txt` y `sitemap`~~ — hechos, y la descripción se recortó a 153 caracteres.
 
-- [ ] **Prueba de teclado a mano.** El inspector mide contraste y nombres accesibles, pero el
-      recorrido real con Tab (skip link, el `<details>` de la libreta, el input del simulador,
-      los 3 toggles, los 2 selects) lo tengo que hacer yo de punta a punta. Nunca ocurrió
-      con un usuario real.
+- [ ] **Prueba de teclado a mano.** Lighthouse da 100 en accesibilidad y el DOM verificado está
+      bien (un h1, cuatro landmarks, todas las imágenes con alt, un `aria-live`), pero eso cubre
+      solo una parte: el recorrido real con Tab — skip link, el `<details>` de la libreta, el
+      input del simulador, los 3 toggles y los 2 selects — todavía no lo hizo una persona de
+      punta a punta.
 
-- [ ] **Lighthouse.** Los 17 criterios del spec piden Performance ≥ 95 y Accessibility 100 en
-      móvil, y todavía no lo corrí. El peso (12 KB) hace pensar que sí, pero no está medido.
+- [x] ~~Lighthouse~~ — medido. Móvil (4x CPU, slow 4G): 100 performance / 100 accessibility /
+      100 best-practices / 100 SEO. LCP 0,8 s, CLS 0, TBT 0 ms. Desktop: los mismos 100, LCP 0,2 s.
 
 - [ ] **Versión en alemán.** Fuera de alcance por ahora: el sitio es solo inglés. Si en algún
       momento apuntás al Mittelstand, hace falta una segunda versión con URLs propias.
